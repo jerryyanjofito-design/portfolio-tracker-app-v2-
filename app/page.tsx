@@ -292,15 +292,15 @@ export default function Home() {
   if (loading) return <div className="p-6">Loading...</div>;
 
   return (
-    <main className="min-h-screen px-6 py-8">
-      <div className="max-w-[1200px] mx-auto space-y-8">
+    <main className="min-h-screen px-3 py-4 sm:px-6 sm:py-8">
+      <div className="max-w-[1200px] mx-auto space-y-4 sm:space-y-8">
 
-        {error && <div className="text-negative">{error}</div>}
+        {error && <div className="text-negative p-3">{error}</div>}
 
         {/* Header with refresh buttons */}
-        <div className="flex justify-between items-center">
-          <h1 className="text-2xl font-bold">Portfolio Dashboard</h1>
-          <div className="flex gap-3">
+        <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3">
+          <h1 className="text-xl sm:text-2xl font-bold">Portfolio Dashboard</h1>
+          <div className="flex flex-row sm:flex-row gap-2 w-full sm:w-auto">
             <button
               onClick={async () => {
                 if (holdings.length > 0) {
@@ -314,9 +314,9 @@ export default function Home() {
                 }
               }}
               disabled={loading || holdings.length === 0}
-              className={`btn-secondary ${loading ? 'opacity-50 cursor-not-allowed' : ''}`}
+              className={`btn-secondary flex-1 ${loading ? 'opacity-50 cursor-not-allowed' : ''}`}
             >
-              {loading ? '↻ Force Refresh...' : '↻ Force Refresh'}
+              <span className="text-sm">{loading ? '↻ Refreshing...' : '↻ Refresh'}</span>
             </button>
             <button
               onClick={() => {
@@ -328,9 +328,9 @@ export default function Home() {
                 }
               }}
               disabled={loading || holdings.length === 0}
-              className={`btn-secondary ${loading ? 'opacity-50 cursor-not-allowed' : ''}`}
+              className={`btn-secondary flex-1 ${loading ? 'opacity-50 cursor-not-allowed' : ''}`}
             >
-              {loading ? '↻ Refreshing...' : '↻ Refresh Prices'}
+              <span className="text-sm">{loading ? 'Loading...' : '↻ Prices'}</span>
             </button>
           </div>
         </div>
@@ -338,6 +338,14 @@ export default function Home() {
         {/* Hero Section - Net Worth */}
         <div className="animate-fade-up" style={{ animationDelay: '0ms' }}>
           <NetWorthDisplay summary={summary} assetsTotal={netWorthAllocation.assetsTotal} />
+        </div>
+
+        {/* Add Cash Form */}
+        <div className="animate-fade-up" style={{ animationDelay: '90ms' }}>
+          <AddCashAccountForm
+            isOpen={isAddCashFormOpen}
+            onAddCashAccount={handleAddCashAccount}
+          />
         </div>
 
         {/* Performance Chart */}
@@ -350,13 +358,13 @@ export default function Home() {
 
         {/* Cash Accounts Section */}
         <div className="animate-fade-up" style={{ animationDelay: '120ms' }}>
-          <div className="section-header">
-            <span className="section-label">CASH ACCOUNTS</span>
+          <div className="section-header flex-wrap gap-2">
+            <span className="section-label">CASH</span>
             <button
               onClick={() => setIsAddCashFormOpen(!isAddCashFormOpen)}
-              className="btn-glass"
+              className="btn-glass text-xs"
             >
-              + Add Account
+              + Add
             </button>
           </div>
           <CashAccounts
@@ -375,13 +383,13 @@ export default function Home() {
 
         {/* Assets Section */}
         <div className="animate-fade-up" style={{ animationDelay: '240ms' }}>
-          <div className="section-header">
+          <div className="section-header flex-wrap gap-2">
             <span className="section-label">ASSETS</span>
             <button
               onClick={() => setIsAssetModalOpen(true)}
-              className="btn-glass"
+              className="btn-glass text-xs"
             >
-              + Add Asset
+              + Add
             </button>
           </div>
           <AssetAccounts
@@ -399,13 +407,13 @@ export default function Home() {
 
         {/* Holdings Section */}
         <div className="animate-fade-up" style={{ animationDelay: '300ms' }}>
-          <div className="section-header">
+          <div className="section-header flex-wrap gap-2">
             <span className="section-label">HOLDINGS</span>
             <button
               onClick={() => setIsAddHoldingFormOpen(!isAddHoldingFormOpen)}
-              className="btn-glass"
+              className="btn-glass text-xs"
             >
-              + Add Holding
+              + Add
             </button>
           </div>
           <HoldingsTable
@@ -416,7 +424,8 @@ export default function Home() {
           />
         </div>
 
-        <div className="animate-fade-up" style={{ animationDelay: '360ms' }}>
+        {/* Add Holding Form */}
+        <div className="animate-fade-up" style={{ animationDelay: '330ms' }}>
           <AddHoldingForm
             isOpen={isAddHoldingFormOpen}
             onAddHolding={handleAddHolding}
@@ -432,7 +441,7 @@ export default function Home() {
         </div>
 
         {/* Allocation Charts */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 animate-fade-up" style={{ animationDelay: '480ms' }}>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 animate-fade-up" style={{ animationDelay: '480ms' }}>
           <PortfolioAllocationChart data={portfolioAllocation} />
           <NetWorthAllocationChart
             investmentsTotal={summary.totalHoldingsValue}
@@ -460,7 +469,7 @@ export default function Home() {
         {/* Floating Chat Button */}
         <button
           onClick={() => setIsChatOpen(true)}
-          className="fixed bottom-6 right-6 btn-primary p-4 z-50"
+          className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 btn-primary p-3 sm:p-4 z-50"
           title="Ask AI Advisor"
         >
           💬

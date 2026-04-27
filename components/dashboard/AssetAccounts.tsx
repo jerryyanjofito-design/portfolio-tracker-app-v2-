@@ -50,43 +50,43 @@ export default function AssetAccounts({
   }
 
   return (
-    <div className="glass-card" style={{ padding: '24px' }}>
+    <div className="glass-card" style={{ padding: '16px sm:px-6 sm:py-6' }}>
       {/* Summary Grid Header */}
-      <div className="grid grid-cols-3 gap-4 mb-6 pb-4" style={{ borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
-        <div className="text-center">
-          <p className="text-[11px] uppercase text-secondary tracking-wider">Business Assets</p>
-          <p className="text-[22px] font-bold text-primary tabular-nums">{formatIDR(totalBusinessValue)}</p>
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 sm:gap-4 mb-3 sm:mb-6 pb-3 border-b" style={{ borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
+        <div className="text-center sm:text-center">
+          <p className="text-[10px] uppercase text-secondary tracking-wider">Business Assets</p>
+          <p className="text-[16px] sm:text-[22px] font-bold text-primary tabular-nums">{formatIDR(totalBusinessValue)}</p>
         </div>
-        <div className="text-center" style={{ borderLeft: '1px solid rgba(255,255,255,0.06)', borderRight: '1px solid rgba(255,255,255,0.06)' }}>
-          <p className="text-[11px] uppercase text-secondary tracking-wider">Other Assets</p>
-          <p className="text-[22px] font-bold text-primary tabular-nums">{formatIDR(totalOtherValue)}</p>
+        <div className="text-center sm:text-center border-t sm:border-t-0 sm:border-l sm:border-r" style={{ borderColor: 'rgba(255,255,255,0.06)', paddingTop: '10px', paddingBottom: '10px' }}>
+          <p className="text-[10px] uppercase text-secondary tracking-wider">Other Assets</p>
+          <p className="text-[16px] sm:text-[22px] font-bold text-primary tabular-nums">{formatIDR(totalOtherValue)}</p>
         </div>
-        <div className="text-center">
-          <p className="text-[11px] uppercase text-secondary tracking-wider">Total Assets</p>
-          <p className="text-[22px] font-bold text-accent tabular-nums">{formatIDR(totalValue)}</p>
+        <div className="text-center sm:text-center">
+          <p className="text-[10px] uppercase text-secondary tracking-wider">Total Assets</p>
+          <p className="text-[16px] sm:text-[22px] font-bold text-accent tabular-nums">{formatIDR(totalValue)}</p>
         </div>
       </div>
 
       {/* Asset Rows */}
-      <div className="space-y-3">
+      <div className="space-y-2">
         {assetAccounts.map((asset) => (
           <div
             key={asset.id}
-            className="hover-reveal-row flex items-center justify-between p-3 rounded-lg"
+            className="hover-reveal-row flex flex-col sm:flex-row sm:items-center sm:justify-between p-2 sm:p-3 rounded-lg"
             style={{
               background: 'rgba(255,255,255,0.03)',
-              minHeight: '48px',
+              minHeight: 'auto',
             }}
           >
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-2 sm:gap-3 mb-2 sm:mb-0">
               {/* Category Pill */}
-              <span className={`pill-badge ${asset.type === 'business' ? 'pill-positive' : 'text-primary'}`} style={{ background: asset.type === 'business' ? 'rgba(48,209,88,0.12)' : 'rgba(255,255,255,0.08)' }}>
+              <span className={`pill-badge ${asset.type === 'business' ? 'pill-positive' : 'text-primary'}`} style={{ background: asset.type === 'business' ? 'rgba(48,209,88,0.12)' : 'rgba(255,255,255,0.08)', fontSize: '11px', padding: '3px 8px' }}>
                 {asset.type === 'business' ? 'Business' : 'Asset'}
               </span>
-              <p className="text-[15px] font-bold text-primary">{asset.name}</p>
+              <p className="text-[13px] sm:text-[15px] font-bold text-primary">{asset.name}</p>
             </div>
 
-            <div className="flex items-center gap-3">
+            <div className="flex items-center justify-between sm:gap-3">
               {editingValue?.id === asset.id ? (
                 <div className="flex items-center gap-2">
                   <input

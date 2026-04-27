@@ -114,10 +114,10 @@ export default function TransactionModal({
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
+    <div className="fixed inset-0 bg-black/50 flex items-end sm:items-center justify-center z-50">
       <div
-        className="glass-card-elevated w-full max-w-md"
-        style={{ padding: '24px' }}
+        className="glass-card-elevated w-full sm:max-w-md sm:rounded-2xl rounded-t-2xl"
+        style={{ padding: '20px', maxHeight: '90vh', overflowY: 'auto' }}
       >
         <div className="flex justify-between items-center mb-6">
           <h2 className="text-[17px] font-semibold">

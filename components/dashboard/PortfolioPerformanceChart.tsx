@@ -117,11 +117,11 @@ export default function PortfolioPerformanceChart({ snapshots, currentNetWorth }
 
   if (chartData.length === 0) {
     return (
-      <div className="glass-card" style={{ padding: '24px' }}>
+      <div className="glass-card" style={{ padding: '12px sm:px-6 sm:py-6' }}>
         <div className="flex justify-between items-center mb-4">
-          <span className="section-label">PORTFOLIO PERFORMANCE</span>
+          <span className="section-label">PERFORMANCE</span>
         </div>
-        <p className="text-secondary text-center py-8">
+        <p className="text-secondary text-center py-6 sm:py-8 text-sm">
           No performance data available yet
         </p>
       </div>
@@ -129,17 +129,17 @@ export default function PortfolioPerformanceChart({ snapshots, currentNetWorth }
   }
 
   return (
-    <div className="glass-card" style={{ padding: '24px' }}>
+    <div className="glass-card" style={{ padding: '12px sm:px-6 sm:py-6' }}>
       {/* Section Header */}
-      <div className="section-header">
-        <span className="section-label">PORTFOLIO PERFORMANCE</span>
-        <div className="flex gap-2">
+      <div className="section-header flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2">
+        <span className="section-label">PERFORMANCE</span>
+        <div className="flex gap-1 sm:gap-2 flex-wrap">
           {(['1W', '1M', '3M', 'ALL'] as TimeFilter[]).map(timeFilter => (
             <button
               key={timeFilter}
               onClick={() => setFilter(timeFilter)}
-              className={`btn-glass ${filter === timeFilter ? 'active' : ''}`}
-              style={{ transition: 'all 120ms ease' }}
+              className={`btn-glass text-[10px] sm:text-sm ${filter === timeFilter ? 'active' : ''}`}
+              style={{ transition: 'all 120ms ease', padding: '4px 10px' }}
             >
               {timeFilter}
             </button>
@@ -147,7 +147,7 @@ export default function PortfolioPerformanceChart({ snapshots, currentNetWorth }
         </div>
       </div>
 
-      <ResponsiveContainer width="100%" height={300}>
+      <ResponsiveContainer width="100%" height={180}>
         <AreaChart data={chartData}>
           <defs>
             <linearGradient id="colorGradient" x1="0" y1="0" x2="0" y2="1">

@@ -19,7 +19,7 @@ export default function CashAccounts({ cashAccounts, onDeleteAccount, onUpdateAc
   }
 
   return (
-    <div className="glass-card" style={{ padding: '24px' }}>
+    <div className="glass-card" style={{ padding: '12px sm:px-6 sm:py-6' }}>
       <div className="space-y-0">
         {cashAccounts.map((account, index) => {
           const accountName = account.accountName || account.name || 'Unknown Account';
@@ -40,18 +40,18 @@ export default function CashAccounts({ cashAccounts, onDeleteAccount, onUpdateAc
           return (
             <div
               key={account.id}
-              className={`hover-reveal-row flex items-center justify-between ${index > 0 ? 'pt-4' : ''}`}
+              className={`hover-reveal-row flex flex-col sm:flex-row sm:items-center sm:justify-between ${index > 0 ? 'pt-3' : ''}`}
               style={{
-                minHeight: '56px',
+                minHeight: 'auto',
                 borderBottom: index < cashAccounts.length - 1 ? '1px solid rgba(255,255,255,0.05)' : 'none',
               }}
             >
-              <div>
-                <p className="text-[15px] font-bold text-primary">{accountName}</p>
-                <p className="text-[12px] text-secondary">{account.currency}</p>
+              <div className="mb-2 sm:mb-0">
+                <p className="text-[14px] sm:text-[15px] font-bold text-primary">{accountName}</p>
+                <p className="text-[11px] sm:text-[12px] text-secondary">{account.currency}</p>
               </div>
-              <div className="flex items-center gap-3">
-                <p className="text-[15px] font-bold tabular-nums">{displayValue}</p>
+              <div className="flex items-center justify-between sm:gap-3">
+                <p className="text-[14px] sm:text-[15px] font-bold tabular-nums">{displayValue}</p>
                 <div className="flex gap-1 row-actions">
                   {onUpdateAccount && (
                     <button
@@ -63,6 +63,7 @@ export default function CashAccounts({ cashAccounts, onDeleteAccount, onUpdateAc
                       }}
                       className="btn-glass"
                       title="Edit amount"
+                      style={{ padding: '5px 10px', fontSize: '12px' }}
                     >
                       ✏️
                     </button>
@@ -72,6 +73,7 @@ export default function CashAccounts({ cashAccounts, onDeleteAccount, onUpdateAc
                       onClick={() => onDeleteAccount(account.id)}
                       className="btn-glass text-negative"
                       title="Delete account"
+                      style={{ padding: '5px 10px', fontSize: '12px' }}
                     >
                       ✕
                     </button>

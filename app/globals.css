@@ -336,6 +336,45 @@ button, a, [role="button"] {
   color: var(--text-primary) !important;
 }
 
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  /* Ensure no horizontal scroll */
+  body {
+    overflow-x: hidden;
+  }
+
+  /* Minimum touch targets for mobile (44px minimum) */
+  button, a, [role="button"], .btn-glass, .btn-primary, .btn-secondary {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 16px;
+  }
+
+  /* Ensure inputs are touch-friendly */
+  input, textarea, select {
+    min-height: 44px;
+    font-size: 16px; /* Prevent zoom on iOS */
+  }
+
+  /* Better spacing for glass cards on mobile */
+  .glass-card {
+    padding: 16px !important;
+  }
+
+  /* Improve section spacing */
+  .grid-holdings > div {
+    padding: 12px !important;
+  }
+}
+
+/* Ensure proper viewport meta tag behavior */
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
 /* Ensure no inherited black text */
 * {
   /* Override any inherited text color from browser defaults */
