@@ -1,0 +1,372 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Colors */
+  --bg: #000000;
+  --bg-elevated: #0a0a0a;
+  --glass: rgba(255, 255, 255, 0.05);
+  --glass-hover: rgba(255, 255, 255, 0.08);
+  --border: rgba(255, 255, 255, 0.08);
+  --border-strong: rgba(255, 255, 255, 0.12);
+  --accent: #0A84FF;
+  --positive: #30D158;
+  --negative: #FF453A;
+  --text-primary: rgba(255, 255, 255, 0.95);
+  --text-secondary: rgba(255, 255, 255, 0.50);
+  --text-tertiary: rgba(255, 255, 255, 0.30);
+
+  /* Typography */
+  --font: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', sans-serif;
+
+  /* Radii */
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 20px;
+  --radius-pill: 980px;
+
+  /* Spacing (8pt grid) */
+  --space-1: 8px;
+  --space-2: 16px;
+  --space-3: 24px;
+  --space-4: 32px;
+  --space-5: 40px;
+
+  /* Tailwind compatible colors */
+  --background: var(--bg);
+  --foreground: var(--text-primary);
+  --card: var(--bg-elevated);
+  --card-foreground: var(--text-primary);
+  --popover: var(--bg-elevated);
+  --popover-foreground: var(--text-primary);
+  --primary: var(--accent);
+  --primary-foreground: #ffffff;
+  --secondary: var(--glass);
+  --secondary-foreground: var(--text-primary);
+  --muted: var(--glass);
+  --muted-foreground: var(--text-secondary);
+  --accent-glass: var(--glass);
+  --accent-foreground: var(--accent);
+  --destructive: var(--negative);
+  --destructive-foreground: #ffffff;
+  --border-color: var(--border);
+  --input: var(--glass);
+  --ring: var(--accent);
+  --radius: var(--radius-md);
+}
+
+* {
+  border-color: var(--border-color);
+}
+
+body {
+  font-family: var(--font);
+  background: radial-gradient(ellipse 80% 50% at 20% 20%, rgba(10,132,255,0.06), transparent 60%),
+              radial-gradient(ellipse 60% 40% at 80% 80%, rgba(48,209,88,0.04), transparent 60%),
+              #000;
+  color: rgba(255, 255, 255, 0.95) !important;
+  min-height: 100vh;
+}
+
+/* Glass Card Base */
+.glass-card {
+  background: var(--glass);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow:
+    0 0 0 0.5px rgba(255,255,255,0.06) inset,
+    0 20px 40px rgba(0,0,0,0.4),
+    0 1px 0 rgba(255,255,255,0.08) inset;
+}
+
+.glass-card-elevated {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-lg);
+  box-shadow:
+    0 0 0 0.5px rgba(255,255,255,0.08) inset,
+    0 20px 40px rgba(0,0,0,0.5),
+    0 1px 0 rgba(255,255,255,0.10) inset;
+}
+
+/* Section Header Pattern */
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-2);
+}
+
+.section-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-tertiary);
+}
+
+.section-divider {
+  border-top: 1px solid rgba(255,255,255,0.06);
+  margin-top: 12px;
+}
+
+/* Pill Badge */
+.pill-badge {
+  border-radius: var(--radius-pill);
+  padding: 4px 10px;
+  font-size: 13px;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.pill-positive {
+  color: var(--positive);
+  background: rgba(48,209,88,0.12);
+}
+
+.pill-negative {
+  color: var(--negative);
+  background: rgba(255,69,58,0.12);
+}
+
+/* Buttons */
+.btn-primary {
+  background: var(--accent);
+  border-radius: var(--radius-pill);
+  padding: 8px 20px;
+  font-size: 15px;
+  font-weight: 500;
+  color: #fff;
+  border: none;
+  transition: filter 80ms ease, transform 80ms ease;
+  cursor: pointer;
+}
+
+.btn-primary:hover {
+  filter: brightness(1.1);
+  transform: translateY(-1px);
+}
+
+.btn-secondary {
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.10);
+  border-radius: var(--radius-pill);
+  padding: 7px 18px;
+  font-size: 14px;
+  color: var(--text-primary);
+  transition: background 120ms ease;
+  cursor: pointer;
+}
+
+.btn-secondary:hover {
+  background: rgba(255,255,255,0.13);
+}
+
+.btn-glass {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: var(--radius-pill);
+  padding: 6px 14px;
+  font-size: 13px;
+  color: var(--text-secondary);
+  transition: all 120ms ease;
+  cursor: pointer;
+}
+
+.btn-glass:hover {
+  background: rgba(255,255,255,0.12);
+  color: var(--text-primary);
+}
+
+.btn-glass.active {
+  background: rgba(255,255,255,0.12);
+  color: var(--text-primary);
+}
+
+/* Navbar */
+.navbar {
+  height: 52px;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(0,0,0,0.72);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+}
+
+.navbar-title {
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+/* Animations */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-up {
+  animation: fadeUp 500ms ease forwards;
+}
+
+/* Hover reveal for rows */
+.row-actions {
+  opacity: 0;
+  transition: opacity 120ms ease;
+}
+
+.hover-reveal-row:hover .row-actions {
+  opacity: 1;
+}
+
+.hover-reveal-row {
+  transition: background 120ms ease;
+}
+
+.hover-reveal-row:hover {
+  background: rgba(255,255,255,0.03);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,0.12);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255,255,255,0.18);
+}
+
+/* Tabular numbers for all currency values */
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Chart glow effect */
+.chart-glow {
+  filter: drop-shadow(0 0 8px rgba(10,132,255,0.5));
+}
+
+/* Donut chart segment */
+.donut-segment {
+  stroke-linecap: round;
+}
+
+/* Grid layout utilities */
+.grid-holdings {
+  display: grid;
+  gap: 8px;
+}
+
+.grid-holdings > div {
+  background: rgba(255,255,255,0.03);
+  border-radius: 14px;
+  padding: 14px 20px;
+  transition: all 120ms ease;
+}
+
+.grid-holdings > div:hover {
+  box-shadow: 0 0 0 1px rgba(255,255,255,0.10);
+  background: rgba(255,255,255,0.05);
+}
+
+/* Text Color Utilities */
+.text-primary {
+  color: rgba(255, 255, 255, 0.95);
+}
+
+.text-secondary {
+  color: rgba(255, 255, 255, 0.50);
+}
+
+.text-tertiary {
+  color: rgba(255, 255, 255, 0.30);
+}
+
+/* Input and Textarea Styles */
+input,
+textarea,
+select {
+  color: var(--text-primary);
+  background: var(--input);
+  border-color: var(--border-color);
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--text-secondary);
+}
+
+/* Select dropdown styling */
+select option {
+  background: var(--bg-elevated);
+  color: var(--text-primary);
+}
+
+/* Force white text on all interactive elements */
+button, a, [role="button"] {
+  color: var(--text-primary) !important;
+}
+
+/* Ensure no inherited black text */
+* {
+  /* Override any inherited text color from browser defaults */
+  color: inherit !important;
+}
+
+/* Explicit text color for body */
+body {
+  color: var(--text-primary) !important;
+}
+
+/* Override Tailwind's default button styles */
+.btn-primary,
+.btn-secondary,
+.btn-glass {
+  color: var(--text-primary) !important;
+}
+
+/* Fix any elements that might be using Tailwind's default text colors */
+.text-white {
+  color: var(--text-primary) !important;
+}
+
+.text-gray-900,
+.text-gray-800,
+.text-gray-700,
+.text-gray-600,
+.text-gray-500,
+.text-gray-400,
+.text-gray-300,
+.text-gray-200,
+.text-gray-100 {
+  color: var(--text-primary) !important;
+}
